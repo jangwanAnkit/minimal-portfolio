@@ -1,8 +1,7 @@
-import React from 'react';
 import { Code2, Database, Layout, Server, Settings, Terminal } from 'lucide-react';
 
 const SkillCategory = ({ title, skills, icon: Icon }) => (
-  <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+  <div className="p-6 pt-0 bg-white rounded-lg shadow-sm border border-gray-100">
     <div className="flex items-center space-x-2 mb-4">
       <Icon className="w-5 h-5 text-indigo-500" />
       <h3 className="text-lg font-semibold">{title}</h3>
@@ -25,7 +24,7 @@ const Skills = () => {
     {
       title: 'Frontend',
       icon: Layout,
-      skills: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Redux'],
+      skills: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Astro'],
     },
     {
       title: 'Backend',
@@ -35,22 +34,22 @@ const Skills = () => {
     {
       title: 'Database',
       icon: Database,
-      skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma', 'SQL'],
+      skills: ['PostgreSQL', 'MongoDB', 'Redis', 'MYSQL'],
     },
     {
       title: 'Languages',
       icon: Code2,
-      skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'SQL'],
+      skills: ['JavaScript', 'TypeScript', 'Python', 'SQL'],
     },
     {
       title: 'Tools',
       icon: Terminal,
-      skills: ['Git', 'Docker', 'AWS', 'Linux', 'VS Code'],
+      skills: ['Git', 'Docker', 'AWS', 'Azure', 'Linux', 'VS Code', 'Cursor'],
     },
     {
       title: 'Other',
       icon: Settings,
-      skills: ['Agile', 'CI/CD', 'Testing', 'Security', 'Performance'],
+      skills: ['Agile Project Management', 'CI/CD', 'Hubspot', 'Pipedrive', 'Airtable'],
     },
   ];
 

@@ -1,0 +1,21 @@
+{
+  "short_name": "Ankit Portfolio",
+  "name": "Ankit Jangwan - Full Stack Developer Portfolio",
+  "icons": [
+    {
+      "src": "https://avatars.githubusercontent.com/u/105637896?v=4&auto=format&fit=crop&w=192&h=192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://avatars.githubusercontent.com/u/105637896?v=4&auto=format&fit=crop&w=512&h=512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "description": "Portfolio website of Ankit Jangwan, a Full Stack Developer and Cloud Integration Expert"
+} 

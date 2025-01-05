@@ -5,8 +5,8 @@ const Navbar = () => {
     { label: 'About', icon: User2, href: '#about' },
     { label: 'Skills', icon: Code2, href: '#skills' },
     { label: 'Projects', icon: Briefcase, href: '#projects' },
-    { label: 'Contact', icon: Mail, href: '#contact' },
     { label: 'Experience', icon: Building, href: '#experience' },
+    { label: 'Contact', icon: Mail, href: '#contact' },
   ];
 
   return (

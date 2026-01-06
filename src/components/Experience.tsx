@@ -1,55 +1,8 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import type { Experience } from '../types/portfolio';
 
-interface ExperienceItem {
-  company: string;
-  role: string;
-  duration: string;
-  location: string;
-  details: string[];
-  logo: string;
-}
-
-const experiences: ExperienceItem[] = [
-  {
-    company: 'Cloudify',
-    role: 'Business Integration Specialist',
-    duration: 'Aug 2024 – Dec 2024',
-    location: 'Delhi',
-    logo: 'https://cms.cloudify.biz/uploads/cloudify_logo_5b1553310b.svg',
-    details: [
-      'Custom Integration Lead: Led the team in delivering tailored solutions using the AWS Serverless tech stack (Lambda, SST framework), React, and Next.js.',
-      'Client Delivery and Collaboration: Managed client communication, team coordination, and delivery of B2B solutions, working directly with the CEO and end clients.',
-      'Third-Party Integrations: Implemented integrations with Pipedrive, Hubspot, Zapier, Fortnox, E-conomic (invoicing), Brevo, MSG91 (WhatsApp/SMS), Stripe (payments), and Shopify/WooCommerce APIs for E-Commerce.',
-      'Project Management: Oversaw sprints, release planning, and daily stand-ups to ensure seamless project execution.'
-    ]
-  },
-  {
-    company: 'Saara Inc',
-    role: 'Lead Software Developer',
-    duration: 'May 2022 – Aug 2024',
-    location: 'Bangalore',
-    logo: 'https://saara.io/wp-content/uploads/2024/05/cropped-Saara_Logo-1.png',
-    details: [
-      'Leadership and Development: Led full-stack development and lifecycle management of AI-powered products like EcoReturns and SalesGPT, incorporating Django, React, Next.js, and PostgreSQL.',
-      'Cloud Deployments: Executed end-to-end Azure deployments, including server setup, database management, and SSL configuration.',
-      'Third-Party Integrations: Delivered multiple integrations, such as Amazon SES, MSG91, Celery/Redis, and Shopify/WooCommerce APIs for seamless E-Commerce operations.',
-      'Project Management: Coordinated with stakeholders for sprint planning, backlog grooming, and timely product releases.'
-    ]
-  },
-  {
-    company: 'SHL',
-    role: 'Software Engineer',
-    duration: 'July 2020 – May 2022',
-    location: 'Gurgaon',
-    logo: 'https://www.shl.com/assets/header-graphics/SHL-logo-colour-update.svg',
-    details: [
-      'Backend Development and Optimization: Improved web applications for the Reporting and Scoring team using Python and PHP, achieving a 30% efficiency boost, and delivered custom reporting solutions for clients like NASSCOM and Adecco by transitioning legacy platforms to a universal system.'
-    ]
-  }
-];
-
-const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => {
+const ExperienceCard = ({ experience }: { experience: Experience }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -105,6 +58,43 @@ const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => {
 };
 
 const Experience = () => {
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+
+  useEffect(() => {
+    fetch('/data/experience.json')
+      .then(res => res.json())
+      .then(data => setExperiences(data.experience || []))
+      .catch(err => console.error('Failed to load experience:', err));
+  }, []);
+
+  if (!experiences.length) {
+    return (
+      <section id="experience" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="animate-pulse space-y-4">
+              <div className="h-8 bg-gray-200 rounded max-w-md mx-auto"></div>
+              <div className="h-4 bg-gray-200 rounded max-w-lg mx-auto"></div>
+            </div>
+          </div>
+          <div className="space-y-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="animate-pulse bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gray-200 rounded"></div>
+                  <div className="flex-1 space-y-2">
+                    <div className="h-5 bg-gray-200 rounded w-1/3"></div>
+                    <div className="h-4 bg-gray-200 rounded w-1/4"></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="experience" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -124,4 +114,4 @@ const Experience = () => {
   );
 };
 
-export default Experience; 
+export default Experience;

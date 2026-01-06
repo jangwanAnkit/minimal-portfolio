@@ -1,0 +1,40 @@
+{
+  "experience": [
+    {
+      "company": "Cloudify",
+      "role": "Business Integration Specialist",
+      "duration": "Aug 2024 – Dec 2024",
+      "location": "Delhi",
+      "logo": "https://cms.cloudify.biz/uploads/cloudify_logo_5b1553310b.svg",
+      "details": [
+        "Custom Integration Lead: Led the team in delivering tailored solutions using the AWS Serverless tech stack (Lambda, SST framework), React, and Next.js.",
+        "Client Delivery and Collaboration: Managed client communication, team coordination, and delivery of B2B solutions, working directly with the CEO and end clients.",
+        "Third-Party Integrations: Implemented integrations with Pipedrive, Hubspot, Zapier, Fortnox, E-conomic (invoicing), Brevo, MSG91 (WhatsApp/SMS), Stripe (payments), and Shopify/WooCommerce APIs for E-Commerce.",
+        "Project Management: Oversaw sprints, release planning, and daily stand-ups to ensure seamless project execution."
+      ]
+    },
+    {
+      "company": "Saara Inc",
+      "role": "Lead Software Developer",
+      "duration": "May 2022 – Aug 2024",
+      "location": "Bangalore",
+      "logo": "https://saara.io/wp-content/uploads/2024/05/cropped-Saara_Logo-1.png",
+      "details": [
+        "Leadership and Development: Led full-stack development and lifecycle management of AI-powered products like EcoReturns and SalesGPT, incorporating Django, React, Next.js, and PostgreSQL.",
+        "Cloud Deployments: Executed end-to-end Azure deployments, including server setup, database management, and SSL configuration.",
+        "Third-Party Integrations: Delivered multiple integrations, such as Amazon SES, MSG91, Celery/Redis, and Shopify/WooCommerce APIs for seamless E-Commerce operations.",
+        "Project Management: Coordinated with stakeholders for sprint planning, backlog grooming, and timely product releases."
+      ]
+    },
+    {
+      "company": "SHL",
+      "role": "Software Engineer",
+      "duration": "July 2020 – May 2022",
+      "location": "Gurgaon",
+      "logo": "https://www.shl.com/assets/header-graphics/SHL-logo-colour-update.svg",
+      "details": [
+        "Backend Development and Optimization: Improved web applications for the Reporting and Scoring team using Python and PHP, achieving a 30% efficiency boost, and delivered custom reporting solutions for clients like NASSCOM and Adecco by transitioning legacy platforms to a universal system."
+      ]
+    }
+  ]
+}

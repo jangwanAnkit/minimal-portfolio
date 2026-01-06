@@ -1,25 +1,10 @@
 import { CheckCircle2, Clock, ExternalLink, Github } from 'lucide-react';
-import React from 'react';
+import { useEffect, useState } from 'react';
+import type { Project } from '../types/portfolio';
 
-// This type can be moved to a separate types file later for API integration
-type Technology = {
-  name: string;
-  category?: string;
-};
+type ProjectProps = Project;
 
-type ProjectStatus = 'ongoing' | 'completed';
-
-type Project = {
-  title: string;
-  description: string;
-  image: string;
-  technologies: Technology[];
-  liveUrl: string;
-  sourceUrl?: string;
-  status: ProjectStatus;
-};
-
-const ProjectCard: React.FC<Project> = ({ title, description, image, technologies, liveUrl, sourceUrl, status }) => (
+const ProjectCard: React.FC<ProjectProps> = ({ title, description, image, technologies, liveUrl, sourceUrl, status }) => (
   <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
     <div className="relative">
       <img
@@ -84,42 +69,46 @@ const ProjectCard: React.FC<Project> = ({ title, description, image, technologie
   </div>
 );
 
-// This can be moved to an API service later
-const projectsData: Project[] = [
-  {
-    title: 'Dynamics Classes',
-    description: 'A comprehensive educational platform built with modern web technologies. Features include SEO optimization, data management with Airtable, and deal tracking through Hubspot.',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&h=400',
-    technologies: [
-      { name: 'React' },
-      { name: 'TypeScript' },
-      { name: 'TailwindCSS' },
-      { name: 'Vite' },
-      { name: 'Airtable' },
-      { name: 'Hubspot' },
-    ],
-    liveUrl: 'http://dynamicsclasses.com/',
-    status: 'ongoing'
-  },
-  {
-    title: 'Architect Portfolio',
-    description: 'A modern portfolio website for an architecture firm, built with Astro framework. Features include responsive design, optimized performance, and integrated contact form using Tally.so.',
-    image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&h=400',
-    technologies: [
-      { name: 'Astro' },
-      { name: 'Bolt.new' },
-      { name: 'TypeScript' },
-      { name: 'TailwindCSS' },
-      { name: 'Node.js' },
-      { name: 'Tally.so' },
-    ],
-    liveUrl: 'https://ankit-rana-portfolio.pages.dev/',
-    sourceUrl: 'https://github.com/jangwanAnkit/ankit-rana-portfolio',
-    status: 'ongoing'
-  }
-];
-
 const Projects = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    fetch('/data/projects.json')
+      .then(res => res.json())
+      .then(data => setProjects(data.projects || []))
+      .catch(err => console.error('Failed to load projects:', err));
+  }, []);
+
+  if (!projects.length) {
+    return (
+      <section id="projects" className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="animate-pulse space-y-4">
+              <div className="h-8 bg-gray-200 rounded max-w-md mx-auto"></div>
+              <div className="h-4 bg-gray-200 rounded max-w-lg mx-auto"></div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[1, 2].map((i) => (
+              <div key={i} className="animate-pulse bg-white rounded-lg shadow-sm border border-gray-100">
+                <div className="h-48 bg-gray-200"></div>
+                <div className="p-6 space-y-4">
+                  <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+                  <div className="h-4 bg-gray-200 rounded"></div>
+                  <div className="flex space-x-2">
+                    <div className="h-6 bg-gray-200 rounded w-1/4"></div>
+                    <div className="h-6 bg-gray-200 rounded w-1/4"></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="projects" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,7 +119,7 @@ const Projects = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projectsData.map((project) => (
+          {projects.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
         </div>

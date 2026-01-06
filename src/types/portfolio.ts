@@ -12,6 +12,8 @@ export interface Profile {
   email: string;
   socials: Social;
   location?: string;
+  experience_years?: string;
+  projects_delivered?: string;
 }
 
 export interface Technology {

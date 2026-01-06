@@ -185,7 +185,7 @@ const SkillsEnhanced = () => {
                         </div>
                         <div className="w-px h-10 bg-navy-200"></div>
                         <div className="text-center">
-                            <p className="text-2xl font-bold text-navy-800">4+</p>
+                            <p className="text-2xl font-bold text-navy-800">5+</p>
                             <p className="text-sm text-navy-500">Years</p>
                         </div>
                     </div>

@@ -131,8 +131,15 @@ const ExperienceEnhanced = () => {
             .catch(err => console.error('Failed to load experience:', err));
     }, []);
 
-    // Calculate total years
-    const totalYears = experiences.length > 0 ? '4+' : '0';
+    // Calculate total years since July 2020 (first joining date)
+    const calculateYears = () => {
+        const startDate = new Date(2020, 6, 1); // July 2020 (months are 0-indexed)
+        const now = new Date();
+        const diffYears = (now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+        return Math.floor(diffYears);
+    };
+
+    const totalYears = experiences.length > 0 ? `${calculateYears()}+` : '0';
 
     if (!experiences.length) {
         return (

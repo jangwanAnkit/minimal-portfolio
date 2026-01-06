@@ -1,0 +1,192 @@
+%-------------------------
+% Resume in Latex
+% Author : Ankit Jangwan
+% Based off of: https://github.com/sb2nov/resume
+% Template variant: Jake Gutierrez
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+
+\input{glyphtounicode}
+\newcommand{\phone}[1]{\href{tel:#1}{\faPhone{} #1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins (Jake template)
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure ATS-readable PDF
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands (Jake variant)
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://ankitjang.one/}{\Large Ankit Jangwan}} & Email : \href{mailto:ankit@ankitjang.one}{ankit@ankitjang.one}\\
+  \href{https://ankitjang.one/}{https://ankitjang.one} & Mobile : +91-9761370345 \\
+  \href{https://www.linkedin.com/in/ankit-jangwan-969419141/}{LinkedIn: ankit-jangwan-969419141} & \href{https://github.com/jangwanAnkit}{GitHub: jangwanAnkit} \\
+\end{tabular*}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Graphic Era University}{Dehradun, Uttarakhand}
+      {B.Tech in Computer Science}{Jul. 2016 -- May 2020}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Software Development Engineer II}{Remote, India}
+      {Instahyre}{Jan. 2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{Working on the employer side of Instahyre’s recruitment platform with focus on candidate screening, activities, notes, interview scheduling, and evaluations.}
+        \resumeItem{\textbf{Tech stack:} Angular and Django for end-to-end feature development, bug fixing, and performance tuning.}
+        \resumeItem{\textbf{Performance:} Migrated Django templates to Jinja, improving page load time from $\sim$1000 ms to $<$200 ms, and optimized key APIs using SQL optimisations, async tasks, and refactoring.}
+        \resumeItem{\textbf{Collaboration:} Built an enhanced candidate view, mentored SDE I engineers, led code reviews, and handled production issue debugging with Datadog, Sentry, and logs.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Business Integration Specialist}{Remote, India}
+      {Cloudify}{Aug. 2024 -- Dec. 2024}
+      \resumeItemListStart
+        \resumeItem{Led the Custom Integration team, owning development lifecycle from requirements to deployment.}
+        \resumeItem{Built and deployed Django, Express, React, and Next.js apps on Azure and AWS.}
+        \resumeItem{Implemented integrations such as Amazon SES, MSG91, Stripe, Celery/Redis task queues, and custom Shopify/WooCommerce solutions.}
+      \resumeItemListEnd
+
+\resumeSubheading
+  {Saara Inc}{Bangalore, India}
+  {Lead Software Developer}{May 2023 -- Aug. 2024}
+  \resumeItemListStart
+    \resumeItem{Led multiple projects, including a greenfield product, from product discussions through architecture, backend/frontend implementation, and cloud deployments.}
+    \resumeItem{Worked with Django, React, Next.js, TypeScript, and Azure, plus relevant AWS services, to deliver customer-facing features at scale.}
+  \resumeItemListEnd
+
+\resumeSubSubheading
+  {Software Developer}{May 2022 -- Apr. 2023}
+  \resumeItemListStart
+    \resumeItem{Contributed as a backend developer and expanded into frontend work using HTML, CSS, JavaScript, and React.}
+    \resumeItem{Implemented integrations including Amazon SES, MSG91, Celery/Redis, and Shopify/WooCommerce APIs for custom e-commerce solutions.}
+  \resumeItemListEnd
+
+
+    \resumeSubheading
+      {Software Engineer}{Remote, India}
+      {SHL}{Jul. 2020 -- May 2022}
+      \resumeItemListStart
+        \resumeItem{Worked on multiple Reporting and Scoring web applications as a backend developer using Python and PHP.}
+        \resumeItem{Improved reporting engine efficiency by 30\% by refactoring legacy code and optimising queries.}
+        \resumeItem{Delivered custom reporting and scoring for clients such as NASSCOM and Adecco and contributed to migration to a universal reporting platform.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{\href{https://saara.io/salesgpt/}{SalesGPT} -- Saara Inc} $|$ \emph{Python, Django, React, PostgreSQL, Azure}}{Feb. 2023 -- Aug. 2024}
+      \resumeItemListStart
+        \resumeItem{Built a virtual sales assistant for online stores on top of OpenAI, designing the backend from scratch and implementing an interactive chatbot UI.}
+      \resumeItemListEnd
+      \resumeProjectHeading
+  {\textbf{Message Scheduler} $|$ \emph{Python, Django, Celery, Redis, Telegram Bot API, Email APIs}}{2024 -- Present}
+  \resumeItemListStart
+    \resumeItem{Built an automated message scheduling system supporting both email and Telegram delivery with cron-based job execution for recurring notifications.}
+  \resumeItemListEnd
+
+\resumeProjectHeading
+  {\textbf{MeetAssist Chrome Extension} $|$ \emph{JavaScript, Chrome Extension APIs, Google Calendar API}}{2023 -- 2024}
+  \resumeItemListStart
+    \resumeItem{Developed a Chrome extension for calendar management and meeting notes automation, integrating with Google Calendar to streamline meeting workflows.}
+  \resumeItemListEnd
+
+\resumeProjectHeading
+  {\textbf{Personal Portfolio Website} $|$ \emph{HTML, CSS, JavaScript, Domain Management}}{2023 -- Present}
+  \resumeItemListStart
+    \resumeItem{Built and deployed a personal portfolio website at \href{https://ankitjang.one}{ankitjang.one} to showcase projects and technical expertise.}
+  \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

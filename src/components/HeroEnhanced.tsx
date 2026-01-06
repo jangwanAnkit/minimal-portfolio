@@ -14,12 +14,12 @@ const HeroEnhanced = () => {
 
     // Stats to showcase experience
     const stats = [
-        { label: 'Years Experience', value: '4+', icon: Calendar },
-        { label: 'Projects Delivered', value: '15+', icon: Briefcase },
+        { label: 'Years Experience', value: profile?.experience_years || '5+', icon: Calendar },
+        { label: 'Projects Delivered', value: profile?.projects_delivered || '15+', icon: Briefcase },
     ];
 
     // Core tech stack to highlight
-    const techStack = ['React', 'TypeScript', 'Node.js', 'Python', 'AWS'];
+    const techStack = ['Django', 'Express', 'React', 'TypeScript', 'Node.js', 'Python', 'AWS'];
 
     if (!profile) {
         return (
@@ -94,7 +94,7 @@ const HeroEnhanced = () => {
                                 <ArrowRight className="w-4 h-4" />
                             </a>
                             <a
-                                href="/resume.pdf"
+                                href="https://github.com/jangwanAnkit/minimal-portfolio/releases/download/latest/resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn btn-secondary"

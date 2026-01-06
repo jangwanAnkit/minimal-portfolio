@@ -1,0 +1,35 @@
+{
+  "projects": [
+    {
+      "title": "Dynamics Classes",
+      "description": "A comprehensive educational platform built with modern web technologies. Features include SEO optimization, data management with Airtable, and deal tracking through Hubspot.",
+      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&h=400",
+      "technologies": [
+        { "name": "React" },
+        { "name": "TypeScript" },
+        { "name": "TailwindCSS" },
+        { "name": "Vite" },
+        { "name": "Airtable" },
+        { "name": "Hubspot" }
+      ],
+      "liveUrl": "http://dynamicsclasses.com/",
+      "status": "ongoing"
+    },
+    {
+      "title": "Architect Portfolio",
+      "description": "A modern portfolio website for an architecture firm, built with Astro framework. Features include responsive design, optimized performance, and integrated contact form using Tally.so.",
+      "image": "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&h=400",
+      "technologies": [
+        { "name": "Astro" },
+        { "name": "Bolt.new" },
+        { "name": "TypeScript" },
+        { "name": "TailwindCSS" },
+        { "name": "Node.js" },
+        { "name": "Tally.so" }
+      ],
+      "liveUrl": "https://ankit-rana-portfolio.pages.dev/",
+      "sourceUrl": "https://github.com/jangwanAnkit/ankit-rana-portfolio",
+      "status": "ongoing"
+    }
+  ]
+}

@@ -1,9 +1,11 @@
 import { Loader2, Mail, MessageSquare, User } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import type { ContactInfo } from '../types/portfolio';
 
-const COOLDOWN_PERIOD = 60 * 60 * 1000; // 1 hour in milliseconds
+const COOLDOWN_PERIOD = 60 * 60 * 1000;
 
 const Contact = () => {
+  const [contactInfo, setContactInfo] = useState<ContactInfo | null>(null);
   const [formData, setFormData] = useState({
     firstname: '',
     email: '',
@@ -13,6 +15,13 @@ const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [cooldownError, setCooldownError] = useState<string | null>(null);
   const [isFormVisible, setIsFormVisible] = useState(true);
+
+  useEffect(() => {
+    fetch('/data/contact.json')
+      .then(res => res.json())
+      .then(data => setContactInfo(data))
+      .catch(err => console.error('Failed to load contact info:', err));
+  }, []);
 
   const canSubmitForm = () => {
     const lastSubmission = localStorage.getItem('lastFormSubmission');
@@ -39,14 +48,12 @@ const Contact = () => {
     setIsFormVisible(false);
     
     try {
-      // Simulate form submission delay for smooth animation
       await new Promise(resolve => setTimeout(resolve, 800));
       
       localStorage.setItem('lastFormSubmission', Date.now().toString());
       setFormData({ firstname: '', email: '', message: '' });
       setShowSuccess(true);
       
-      // Reset after 5 seconds
       setTimeout(() => {
         setShowSuccess(false);
         setIsFormVisible(true);
@@ -65,13 +72,27 @@ const Contact = () => {
     setCooldownError(null);
   };
 
-  // Clear cooldown error after 5 seconds
   useEffect(() => {
     if (cooldownError) {
       const timer = setTimeout(() => setCooldownError(null), 5000);
       return () => clearTimeout(timer);
     }
   }, [cooldownError]);
+
+  if (!contactInfo) {
+    return (
+      <section id="contact" className="py-20 pb-32 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-12 animate-pulse space-y-4">
+              <div className="h-8 bg-gray-200 rounded max-w-md mx-auto"></div>
+              <div className="h-4 bg-gray-200 rounded max-w-lg mx-auto"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="py-20 pb-32 bg-gray-50">
@@ -85,11 +106,11 @@ const Contact = () => {
             <p className="mt-2 text-sm text-gray-500">
               For urgent inquiries, you can email me directly at{' '}
               <a
-                href="mailto:jangwanankitofficial@gmail.com"
+                href={`mailto:${contactInfo.email}`}
                 className="text-indigo-600 hover:text-indigo-500"
                 aria-label="Send email directly"
               >
-                jangwanankitofficial@gmail.com
+                {contactInfo.email}
               </a>
             </p>
           </div>

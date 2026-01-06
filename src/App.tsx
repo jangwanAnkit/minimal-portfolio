@@ -1,24 +1,24 @@
 import { HelmetProvider } from 'react-helmet-async';
-import Contact from './components/Contact';
-import Experience from './components/Experience';
-import Hero from './components/Hero';
-import Navbar from './components/Navbar';
-import Projects from './components/Projects';
+import ContactEnhanced from './components/ContactEnhanced';
+import ExperienceEnhanced from './components/ExperienceEnhanced';
+import HeroEnhanced from './components/HeroEnhanced';
+import NavbarEnhanced from './components/NavbarEnhanced';
+import ProjectsEnhanced from './components/ProjectsEnhanced';
 import SEO from './components/SEO';
-import Skills from './components/Skills';
+import SkillsEnhanced from './components/SkillsEnhanced';
 
 function App() {
   return (
     <HelmetProvider>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen">
         <SEO />
-        <Navbar />
+        <NavbarEnhanced />
         <main>
-          <Hero />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Contact />
+          <HeroEnhanced />
+          <SkillsEnhanced />
+          <ProjectsEnhanced />
+          <ExperienceEnhanced />
+          <ContactEnhanced />
         </main>
       </div>
     </HelmetProvider>

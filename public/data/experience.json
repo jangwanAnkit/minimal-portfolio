@@ -1,11 +1,24 @@
 {
   "experience": [
     {
+      "company": "Instahyre",
+      "role": "Software Development Engineer II",
+      "duration": "Jan 2025 – Present",
+      "location": "Remote, India",
+      "logo": "https://static.instahyre.com/images/logos/logo.webp",
+      "details": [
+        "Working on the employer side of Instahyre's recruitment platform with focus on candidate screening, activities, notes, interview scheduling, and evaluations.",
+        "Tech Stack: Angular and Django for end-to-end feature development, bug fixing, and performance tuning.",
+        "Performance: Migrated Django templates to Jinja, improving page load time from ~1000ms to <200ms, optimized key APIs P75, P90, and P95 using various techniques like SQL optimizations, async tasks, and refactoring.",
+        "Collaboration: Built an enhanced candidate view, mentored SDE I engineers, led code reviews, and handled production issue debugging with Datadog, Sentry, and logs."
+      ]
+    },
+    {
       "company": "Cloudify",
       "role": "Business Integration Specialist",
       "duration": "Aug 2024 – Dec 2024",
       "location": "Delhi",
-      "logo": "https://cms.cloudify.biz/uploads/cloudify_logo_5b1553310b.svg",
+      "logo": "https://framerusercontent.com/images/ZCsT9bdre56onxaWPl9ruRMqQyU.png",
       "details": [
         "Custom Integration Lead: Led the team in delivering tailored solutions using the AWS Serverless tech stack (Lambda, SST framework), React, and Next.js.",
         "Client Delivery and Collaboration: Managed client communication, team coordination, and delivery of B2B solutions, working directly with the CEO and end clients.",
@@ -18,7 +31,7 @@
       "role": "Lead Software Developer",
       "duration": "May 2022 – Aug 2024",
       "location": "Bangalore",
-      "logo": "https://saara.io/wp-content/uploads/2024/05/cropped-Saara_Logo-1.png",
+      "logo": "https://saara.io/wp-content/uploads/2024/12/cropped-cropped-Saara_Logo-1-160x49-1-109x33.png",
       "details": [
         "Leadership and Development: Led full-stack development and lifecycle management of AI-powered products like EcoReturns and SalesGPT, incorporating Django, React, Next.js, and PostgreSQL.",
         "Cloud Deployments: Executed end-to-end Azure deployments, including server setup, database management, and SSL configuration.",

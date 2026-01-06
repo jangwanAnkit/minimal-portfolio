@@ -1,3 +1,342 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+  color: #0f1f42;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   SECTION BACKGROUNDS
+   ============================================ */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+#about {
+  background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 100%);
+}
+
+#skills {
+  background: linear-gradient(180deg, #d9e2ec 0%, #f0f4f8 50%, #ffffff 100%);
+}
+
+#projects {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f4f8 50%, #d9e2ec 100%);
+}
+
+#experience {
+  background: linear-gradient(180deg, #d9e2ec 0%, #ffffff 100%);
+}
+
+#contact {
+  background: linear-gradient(135deg, #0f1f42 0%, #1f3564 100%);
+  color: #ffffff;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f1f42;
+}
+
+h2 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #0f1f42;
+}
+
+h3 {
+  font-weight: 600;
+  color: #0f1f42;
+}
+
+p {
+  color: #3d4a66;
+  line-height: 1.65;
+}
+
+a {
+  transition: all 300ms ease-out;
+  position: relative;
+}
+
+/* ============================================
+   CARD COMPONENT
+   ============================================ */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(217, 226, 236, 0.5);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 300ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  border-color: #00b8c4;
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+.btn {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 24px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 300ms ease;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3d60a8 0%, #00b8c4 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #0f1f42;
+  border: 2px solid #d9e2ec;
+}
+
+.btn-secondary:hover {
+  border-color: #00b8c4;
+  background-color: rgba(0, 184, 196, 0.05);
+  color: #00b8c4;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #00b8c4;
+  border: 2px solid #00b8c4;
+}
+
+.btn-outline:hover {
+  background-color: rgba(0, 184, 196, 0.1);
+}
+
+/* ============================================
+   BADGE STYLES
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.badge-primary {
+  background-color: rgba(0, 184, 196, 0.15);
+  color: #00b8c4;
+}
+
+.badge-success {
+  background-color: rgba(39, 174, 96, 0.15);
+  color: #27ae60;
+}
+
+.badge-purple {
+  background-color: rgba(114, 9, 183, 0.15);
+  color: #7209b7;
+}
+
+.badge-amber {
+  background-color: rgba(230, 126, 34, 0.15);
+  color: #e67e22;
+}
+
+/* ============================================
+   GLASSMORPHISM
+   ============================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.container-premium {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-premium {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-premium {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-py {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+  .section-py {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-py {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* Text Gradient - for headlines */
+.text-gradient {
+  background: linear-gradient(to right, #0f1f42, #00b8c4, #7209b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+main {
+  animation: fade-in-up 0.8s ease-out;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right,
+      #f0f4f8 8%,
+      #f9fbfd 18%,
+      #f0f4f8 33%);
+  background-size: 800px 104px;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+:focus-visible {
+  outline: 2px solid #00b8c4;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   FORM INPUTS
+   ============================================ */
+input,
+textarea,
+select {
+  padding: 10px 16px;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #ffffff;
+  color: #0f1f42;
+  transition: all 300ms ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #00b8c4;
+  box-shadow: 0 0 0 3px rgba(0, 184, 196, 0.1);
+}
+
+/* Dark input variant (for contact section) */
+.input-dark {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.input-dark::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input-dark:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(0, 184, 196, 0.5);
+}

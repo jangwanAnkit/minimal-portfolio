@@ -74,7 +74,7 @@ const HeroEnhanced = () => {
                             />
                             <div className="relative group">
                                 <h1 className="text-xl font-bold text-navy-800">
-                                    Hi, I'm {profile.name.split(' ')[0]}, <span className="cursor-help border-b-2 border-dashed border-navy-300 hover:border-cyan-400 transition-colors pb-0.5">I build things.</span>
+                                    Hi, I'm {profile.name.split(' ')[0]}. <span className="cursor-help border-b-2 border-dashed border-navy-300 hover:border-cyan-400 transition-colors pb-0.5">I build things.</span>
                                 </h1>
                                 {/* Mobile Tooltip Content */}
                                 <div className="absolute top-full left-0 mt-3 w-[280px] p-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-navy-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto z-30">

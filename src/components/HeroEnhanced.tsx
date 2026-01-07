@@ -65,48 +65,54 @@ const HeroEnhanced = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     {/* Left Column - Text Content (Always first on mobile) */}
                     <div className="animate-fade-in-up">
-                        {/* Mobile: Compact header with avatar inline */}
+                        {/* Mobile: Compact header with avatar and inline tooltip */}
                         <div className="flex items-center gap-4 mb-4 lg:hidden">
                             <img
                                 src={profile.avatar}
                                 alt={profile.name}
-                                className="w-16 h-16 rounded-full object-cover shadow-card-sm border-2 border-white"
+                                className="w-16 h-16 rounded-full object-cover shadow-card-sm border-2 border-white flex-shrink-0"
                             />
-                            <div>
-                                {contact.location && (
-                                    <div className="flex items-center gap-1 text-sm text-navy-500 mb-1">
-                                        <MapPin className="w-3 h-3" />
-                                        <span>{contact.location}</span>
-                                    </div>
-                                )}
-                                <h1 className="text-2xl font-bold text-navy-800">
-                                    Hi, I'm {profile.name.split(' ')[0]}
+                            <div className="relative group">
+                                <h1 className="text-xl font-bold text-navy-800">
+                                    Hi, I'm {profile.name.split(' ')[0]}, <span className="cursor-help border-b-2 border-dashed border-navy-300 hover:border-cyan-400 transition-colors pb-0.5">I build things.</span>
                                 </h1>
+                                {/* Mobile Tooltip Content */}
+                                <div className="absolute top-full left-0 mt-3 w-[280px] p-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-navy-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto z-30">
+                                    {/* Arrow */}
+                                    <div className="absolute -top-2 left-8 w-4 h-4 bg-white border-t border-l border-navy-100 transform rotate-45"></div>
+                                    <p className="text-sm text-navy-600 leading-relaxed font-normal">
+                                        {profile.bio}
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Desktop: Location badge */}
                         <div className="hidden lg:block">
-                            {contact.location && (
-                                <div className="inline-flex items-center gap-2 mb-6 badge badge-primary">
-                                    <MapPin className="w-4 h-4" />
-                                    <span>{contact.location}</span>
-                                </div>
-                            )}
-
                             {/* Desktop Headline */}
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
                                 <span className="text-navy-800 block">Hi, I'm {profile.name.split(' ')[0]}</span>
                             </h1>
                         </div>
 
-                        {/* Bio */}
-                        <p className="text-base lg:text-lg text-navy-600 mb-6 lg:mb-8 max-w-xl leading-relaxed">
-                            {profile.bio}
-                        </p>
+                        {/* Bio / Hook with Elegant Tooltip - Desktop only */}
+                        <div className="relative group w-fit mb-8 z-20 hidden lg:block">
+                            <h2 className="text-2xl lg:text-3xl font-bold text-navy-800 cursor-help border-b-2 border-dashed border-navy-300 hover:border-cyan-400 transition-colors inline-block pb-1">
+                                I build things.
+                            </h2>
+
+                            {/* Tooltip Content */}
+                            <div className="absolute top-full left-0 mt-4 w-[280px] sm:w-[400px] p-6 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-navy-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto">
+                                {/* Arrow */}
+                                <div className="absolute -top-2 left-8 w-4 h-4 bg-white border-t border-l border-navy-100 transform rotate-45"></div>
+
+                                <p className="text-base text-navy-600 leading-relaxed font-normal">
+                                    {profile.bio}
+                                </p>
+                            </div>
+                        </div>
 
                         {/* Stats Row - Compact on mobile */}
-                        <div className="flex flex-wrap gap-4 lg:gap-6 mb-6 lg:mb-8">
+                        <div className="flex flex-wrap gap-4 lg:gap-6 mb-6 lg:mb-8 relative z-10">
                             {stats.map((stat) => (
                                 <div key={stat.label} className="flex items-center gap-2 lg:gap-3">
                                     <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-card-sm">

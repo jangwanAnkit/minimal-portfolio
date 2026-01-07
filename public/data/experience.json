@@ -3,7 +3,8 @@
     {
       "company": "Instahyre",
       "role": "Software Development Engineer II",
-      "duration": "Jan 2025 – Present",
+      "startDate": "2025-01",
+      "endDate": null,
       "location": "Remote, India",
       "logo": "https://static.instahyre.com/images/logos/logo.webp",
       "details": [
@@ -16,7 +17,8 @@
     {
       "company": "Cloudify",
       "role": "Business Integration Specialist",
-      "duration": "Aug 2024 – Dec 2024",
+      "startDate": "2024-08",
+      "endDate": "2024-12",
       "location": "Delhi",
       "logo": "https://framerusercontent.com/images/ZCsT9bdre56onxaWPl9ruRMqQyU.png",
       "details": [
@@ -29,7 +31,8 @@
     {
       "company": "Saara Inc",
       "role": "Lead Software Developer",
-      "duration": "May 2022 – Aug 2024",
+      "startDate": "2022-05",
+      "endDate": "2024-08",
       "location": "Bangalore",
       "logo": "https://saara.io/wp-content/uploads/2024/12/cropped-cropped-Saara_Logo-1-160x49-1-109x33.png",
       "details": [
@@ -42,7 +45,8 @@
     {
       "company": "SHL",
       "role": "Software Engineer",
-      "duration": "July 2020 – May 2022",
+      "startDate": "2020-07",
+      "endDate": "2022-05",
       "location": "Gurgaon",
       "logo": "https://www.shl.com/assets/header-graphics/SHL-logo-colour-update.svg",
       "details": [

@@ -1,7 +1,11 @@
 export interface Social {
   github: string;
   linkedin: string;
-  email: string;
+}
+
+export interface ResumeInfo {
+  phone: string;
+  website: string;
 }
 
 export interface Profile {
@@ -9,11 +13,8 @@ export interface Profile {
   title: string;
   bio: string;
   avatar: string;
-  email: string;
   socials: Social;
-  location?: string;
-  experience_years?: string;
-  projects_delivered?: string;
+  resume?: ResumeInfo;
 }
 
 export interface Technology {
@@ -34,14 +35,11 @@ export interface Project {
   featured?: boolean;
 }
 
-export interface ExperienceDetail {
-  detail: string;
-}
-
 export interface Experience {
   company: string;
   role: string;
-  duration: string;
+  startDate: string;  // Format: "YYYY-MM"
+  endDate: string | null;  // null means "Present"
   location: string;
   details: string[];
   logo: string;

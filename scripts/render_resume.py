@@ -95,6 +95,28 @@ def join_tech(technologies: list) -> str:
     return ", ".join(filter(None, names))
 
 
+def format_duration(start_date: str, end_date: str | None = None) -> str:
+    """
+    Format duration string from startDate and endDate.
+    e.g., "Jan 2025 – Present" or "May 2022 – Aug 2024"
+    """
+    months = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ]
+    
+    def format_date(date_str: str) -> str:
+        parts = date_str.split("-")
+        year = int(parts[0])
+        month = int(parts[1])
+        return f"{months[month - 1]} {year}"
+    
+    start = format_date(start_date)
+    end = format_date(end_date) if end_date else "Present"
+    
+    return f"{start} -- {end}"
+
+
 def load_json_file(filepath: Path) -> dict:
     """Load and parse a JSON file."""
     try:
@@ -177,6 +199,7 @@ def create_jinja_env(template_dir: Path) -> Environment:
     env.filters["github_username"] = github_username
     env.filters["linkedin_username"] = linkedin_username
     env.filters["join_tech"] = join_tech
+    env.filters["format_duration"] = format_duration
     
     return env
 

@@ -1,9 +1,11 @@
 import { ChevronDown, ChevronUp, MapPin, Calendar, Building2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import type { Experience } from '../types/portfolio';
+import { formatDuration, getExperienceYearsLabel } from '../lib/utils';
 
 const ExperienceCard = ({ experience, index }: { experience: Experience; index: number }) => {
     const [isExpanded, setIsExpanded] = useState(index === 0); // First one expanded by default
+    const duration = formatDuration(experience.startDate, experience.endDate);
 
     return (
         <div
@@ -61,7 +63,7 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
                             <div className="hidden sm:block text-right">
                                 <div className="flex items-center gap-1.5 text-navy-500 text-sm mb-1">
                                     <Calendar className="w-3.5 h-3.5" />
-                                    <span>{experience.duration}</span>
+                                    <span>{duration}</span>
                                 </div>
                                 <div className="flex items-center gap-1.5 text-navy-400 text-sm">
                                     <MapPin className="w-3.5 h-3.5" />
@@ -86,7 +88,7 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
                     <div className="flex items-center gap-4 mt-3 sm:hidden">
                         <span className="flex items-center gap-1 text-navy-500 text-sm">
                             <Calendar className="w-3.5 h-3.5" />
-                            {experience.duration}
+                            {duration}
                         </span>
                         <span className="flex items-center gap-1 text-navy-400 text-sm">
                             <MapPin className="w-3.5 h-3.5" />
@@ -131,15 +133,8 @@ const ExperienceEnhanced = () => {
             .catch(err => console.error('Failed to load experience:', err));
     }, []);
 
-    // Calculate total years since July 2020 (first joining date)
-    const calculateYears = () => {
-        const startDate = new Date(2020, 6, 1); // July 2020 (months are 0-indexed)
-        const now = new Date();
-        const diffYears = (now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-        return Math.floor(diffYears);
-    };
-
-    const totalYears = experiences.length > 0 ? `${calculateYears()}+` : '0';
+    // Calculate total years from actual experience data
+    const totalYears = getExperienceYearsLabel(experiences);
 
     if (!experiences.length) {
         return (

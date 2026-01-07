@@ -1,6 +1,7 @@
 import { Code2, Database, Layout, Server, Settings, Terminal, Sparkles } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import type { SkillsData, SkillCategory as SkillCategoryType } from '../types/portfolio';
+import type { SkillsData, SkillCategory as SkillCategoryType, Experience } from '../types/portfolio';
+import { getExperienceYearsLabel } from '../lib/utils';
 
 const iconMap = {
     Layout,
@@ -100,17 +101,24 @@ const SkillCategoryCard = ({ category }: { category: SkillCategoryType }) => {
 
 const SkillsEnhanced = () => {
     const [skillsData, setSkillsData] = useState<SkillsData | null>(null);
+    const [experiences, setExperiences] = useState<Experience[]>([]);
 
     useEffect(() => {
-        fetch('/data/skills.json')
-            .then(res => res.json())
-            .then(data => setSkillsData(data))
-            .catch(err => console.error('Failed to load skills:', err));
+        Promise.all([
+            fetch('/data/skills.json').then(res => res.json()),
+            fetch('/data/experience.json').then(res => res.json()),
+        ])
+            .then(([skills, expData]) => {
+                setSkillsData(skills);
+                setExperiences(expData.experience || []);
+            })
+            .catch(err => console.error('Failed to load data:', err));
     }, []);
 
-    // Summary stats
+    // Summary stats - calculated from actual data
     const totalSkills = skillsData?.categories.reduce((acc, cat) => acc + cat.skills.length, 0) || 0;
     const totalCategories = skillsData?.categories.length || 0;
+    const yearsExperience = getExperienceYearsLabel(experiences);
 
     if (!skillsData) {
         return (
@@ -185,7 +193,7 @@ const SkillsEnhanced = () => {
                         </div>
                         <div className="w-px h-10 bg-navy-200"></div>
                         <div className="text-center">
-                            <p className="text-2xl font-bold text-navy-800">5+</p>
+                            <p className="text-2xl font-bold text-navy-800">{yearsExperience}</p>
                             <p className="text-sm text-navy-500">Years</p>
                         </div>
                     </div>

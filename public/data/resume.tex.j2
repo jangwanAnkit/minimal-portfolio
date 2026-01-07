@@ -100,7 +100,7 @@
 %----------HEADING----------
 %----------HEADING-----------------
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-  \textbf{\href{((= profile.resume.website =))}{\Large ((= profile.name =))}} & Email : \href{mailto:((= profile.email =))}{((= profile.email =))}\\
+  \textbf{\href{((= profile.resume.website =))}{\Large ((= profile.name =))}} & Email : \href{mailto:((= contact.email =))}{((= contact.email =))}\\
   \href{((= profile.resume.website =))}{((= profile.resume.website =))} & Mobile : ((= profile.resume.phone =)) \\
   \href{((= profile.socials.linkedin =))}{LinkedIn: ((= profile.socials.linkedin | linkedin_username =))} & \href{((= profile.socials.github =))}{GitHub: ((= profile.socials.github | github_username =))} \\
 \end{tabular*}
@@ -122,7 +122,7 @@
 
     \resumeSubheading
       {((= job.role =))}{((= job.location =))}
-      {((= job.company =))}{((= job.duration =))}
+      {((= job.company =))}{((= job.startDate | format_duration(job.endDate) =))}
       \resumeItemListStart
 (( for detail in job.details ))
         \resumeItem{((= detail | latex_escape =))}

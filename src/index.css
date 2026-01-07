@@ -284,6 +284,52 @@ main {
 }
 
 /* ============================================
+   CAROUSEL ANIMATIONS
+   ============================================ */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.animate-carousel {
+  animation: scroll-left 30s linear infinite;
+}
+
+.carousel-container:hover .animate-carousel,
+.carousel-mask:hover .animate-carousel {
+  animation-play-state: paused;
+}
+
+/* Fade edges for carousel */
+.carousel-mask {
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 3%,
+      black 97%,
+      transparent 100%);
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 3%,
+      black 97%,
+      transparent 100%);
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
    ACCESSIBILITY
    ============================================ */
 :focus-visible {

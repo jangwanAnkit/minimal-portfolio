@@ -37,4 +37,4 @@ ignore
 
 # Generated files (built from templates)
 public/data/resume.tex
-resume.pdf
+resume*.pdf

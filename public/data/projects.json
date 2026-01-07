@@ -1,16 +1,117 @@
 {
   "projects": [
     {
+      "title": "Message Scheduler",
+      "description": "An automated message scheduling system supporting both email and Telegram delivery. Includes cron-based job execution for recurring notifications and scalable background task processing.",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&h=400",
+      "technologies": [
+        {
+          "name": "Python"
+        },
+        {
+          "name": "Django"
+        },
+        {
+          "name": "Celery"
+        },
+        {
+          "name": "Redis"
+        },
+        {
+          "name": "Telegram Bot API"
+        },
+        {
+          "name": "Email APIs"
+        }
+      ],
+      "status": "ongoing"
+    },
+    {
+      "title": "MeetAssist Chrome Extension",
+      "description": "A Chrome extension for calendar management and meeting notes automation. Integrates with Google Calendar to streamline scheduling and improve meeting workflows.",
+      "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&h=400",
+      "technologies": [
+        {
+          "name": "JavaScript"
+        },
+        {
+          "name": "Chrome Extension APIs"
+        },
+        {
+          "name": "Google Calendar API"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "title": "SalesGPT",
+      "description": "A virtual sales assistant for online stores built on top of OpenAI. Designed and implemented the backend from scratch and developed an interactive chatbot UI for real-time customer engagement.",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=400",
+      "technologies": [
+        {
+          "name": "Python"
+        },
+        {
+          "name": "Django"
+        },
+        {
+          "name": "React"
+        },
+        {
+          "name": "PostgreSQL"
+        },
+        {
+          "name": "Azure"
+        }
+      ],
+      "liveUrl": "https://saara.io/salesgpt/",
+      "status": "completed"
+    },
+    {
+      "title": "Personal Portfolio Website",
+      "description": "A personal portfolio website built and deployed to showcase projects, experience, and technical expertise with a clean and minimal design.",
+      "image": "https://avatars.githubusercontent.com/u/105637896?v=4&auto=format&fit=crop&w=150&h=150",
+      "technologies": [
+        {
+          "name": "HTML"
+        },
+        {
+          "name": "CSS"
+        },
+        {
+          "name": "JavaScript"
+        },
+        {
+          "name": "Domain Management"
+        }
+      ],
+      "liveUrl": "https://ankitjang.one",
+      "status": "ongoing",
+      "isCurrentSite": true
+    },
+    {
       "title": "Dynamics Classes",
       "description": "A comprehensive educational platform built with modern web technologies. Features include SEO optimization, data management with Airtable, and deal tracking through Hubspot.",
       "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&h=400",
       "technologies": [
-        { "name": "React" },
-        { "name": "TypeScript" },
-        { "name": "TailwindCSS" },
-        { "name": "Vite" },
-        { "name": "Airtable" },
-        { "name": "Hubspot" }
+        {
+          "name": "React"
+        },
+        {
+          "name": "TypeScript"
+        },
+        {
+          "name": "TailwindCSS"
+        },
+        {
+          "name": "Vite"
+        },
+        {
+          "name": "Airtable"
+        },
+        {
+          "name": "Hubspot"
+        }
       ],
       "liveUrl": "http://dynamicsclasses.com/",
       "status": "ongoing"
@@ -20,12 +121,24 @@
       "description": "A modern portfolio website for an architecture firm, built with Astro framework. Features include responsive design, optimized performance, and integrated contact form using Tally.so.",
       "image": "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&h=400",
       "technologies": [
-        { "name": "Astro" },
-        { "name": "Bolt.new" },
-        { "name": "TypeScript" },
-        { "name": "TailwindCSS" },
-        { "name": "Node.js" },
-        { "name": "Tally.so" }
+        {
+          "name": "Astro"
+        },
+        {
+          "name": "Bolt.new"
+        },
+        {
+          "name": "TypeScript"
+        },
+        {
+          "name": "TailwindCSS"
+        },
+        {
+          "name": "Node.js"
+        },
+        {
+          "name": "Tally.so"
+        }
       ],
       "liveUrl": "https://ankit-rana-portfolio.pages.dev/",
       "sourceUrl": "https://github.com/jangwanAnkit/ankit-rana-portfolio",

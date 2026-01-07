@@ -17,9 +17,6 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: public/data/resume.tex
-      
-      - name: Move PDF to root
-        run: mv public/data/resume.pdf resume.pdf
 
       - name: Create/Update Release
         uses: marvinpinto/action-automatic-releases@latest

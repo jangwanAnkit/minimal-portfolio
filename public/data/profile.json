@@ -3,17 +3,12 @@
   "title": "Software Engineer | Full Stack Developer | Cloud Integration Expert",
   "bio": "Passionate about creating elegant tailored solutions for complex problems using modern technologies. With 5+ years of experience in web development, I specialize in delivering streamlined full-stack development and seamless B2B solutions integration.",
   "avatar": "https://avatars.githubusercontent.com/u/105637896?v=4&auto=format&fit=crop&w=150&h=150",
-  "email": "contact@ankitjang.one",
-  "location": "Uttrakhand, India",
   "socials": {
     "github": "https://github.com/jangwanAnkit",
-    "linkedin": "https://www.linkedin.com/in/ankit-jangwan-969419141/",
-    "email": "mailto:contact@ankitjang.one"
+    "linkedin": "https://www.linkedin.com/in/ankit-jangwan-969419141/"
   },
   "resume": {
     "phone": "+91-9761370345",
     "website": "https://ankitjang.one"
-  },
-  "experience_years": "5+",
-  "projects_delivered": "8+"
+  }
 }

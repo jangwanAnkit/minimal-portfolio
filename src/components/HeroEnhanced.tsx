@@ -1,27 +1,43 @@
 import { Github, Linkedin, Mail, ArrowRight, Download, MapPin, Briefcase, Calendar } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import type { Profile } from '../types/portfolio';
+import type { Profile, Experience, Project, ContactInfo } from '../types/portfolio';
+import { getExperienceYearsLabel, countProjects } from '../lib/utils';
 
 const HeroEnhanced = () => {
     const [profile, setProfile] = useState<Profile | null>(null);
+    const [experiences, setExperiences] = useState<Experience[]>([]);
+    const [projects, setProjects] = useState<Project[]>([]);
+    const [contact, setContact] = useState<ContactInfo | null>(null);
 
     useEffect(() => {
-        fetch('/data/profile.json')
-            .then(res => res.json())
-            .then(data => setProfile(data))
-            .catch(err => console.error('Failed to load profile:', err));
+        Promise.all([
+            fetch('/data/profile.json').then(res => res.json()),
+            fetch('/data/experience.json').then(res => res.json()),
+            fetch('/data/projects.json').then(res => res.json()),
+            fetch('/data/contact.json').then(res => res.json()),
+        ])
+            .then(([profileData, expData, projData, contactData]) => {
+                setProfile(profileData);
+                setExperiences(expData.experience || []);
+                setProjects(projData.projects || []);
+                setContact(contactData);
+            })
+            .catch(err => console.error('Failed to load data:', err));
     }, []);
 
-    // Stats to showcase experience
+    // Calculate stats from actual data
+    const yearsExperience = getExperienceYearsLabel(experiences);
+    const projectCount = `${countProjects(projects)}+`;
+
     const stats = [
-        { label: 'Years Experience', value: profile?.experience_years || '5+', icon: Calendar },
-        { label: 'Projects Delivered', value: profile?.projects_delivered || '15+', icon: Briefcase },
+        { label: 'Years Experience', value: yearsExperience, icon: Calendar },
+        { label: 'Projects Delivered', value: projectCount, icon: Briefcase },
     ];
 
     // Core tech stack to highlight
     const techStack = ['Django', 'Express', 'React', 'TypeScript', 'Node.js', 'Python', 'AWS'];
 
-    if (!profile) {
+    if (!profile || !contact) {
         return (
             <section id="about" className="section-py min-h-[80vh] flex items-center">
                 <div className="container-premium">
@@ -54,17 +70,17 @@ const HeroEnhanced = () => {
                     {/* Left Column - Text Content */}
                     <div className="animate-fade-in-up order-2 lg:order-1">
                         {/* Location badge */}
-                        {profile.location && (
+                        {contact.location && (
                             <div className="inline-flex items-center gap-2 mb-6 badge badge-primary">
                                 <MapPin className="w-4 h-4" />
-                                <span>{profile.location}</span>
+                                <span>{contact.location}</span>
                             </div>
                         )}
 
                         {/* Headline */}
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
                             <span className="text-navy-800 block">Hi, I'm {profile.name.split(' ')[0]}</span>
-                            <span className="text-gradient block mt-2">{profile.title.split('|')[0].trim()}</span>
+                            {/* <span className="text-gradient block mt-2">{profile.title.split('|')[0].trim()}</span> */}
                         </h1>
 
                         {/* Bio */}
@@ -154,7 +170,7 @@ const HeroEnhanced = () => {
                                 </a>
                             )}
                             <a
-                                href={profile.socials.email}
+                                href={`mailto:${contact.email}`}
                                 className="w-12 h-12 rounded-xl bg-white shadow-card-sm border border-navy-100 flex items-center justify-center text-navy-600 hover:text-cyan-600 hover:border-cyan-400 hover:shadow-card-md transition-all"
                                 aria-label="Email Contact"
                             >

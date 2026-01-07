@@ -121,8 +121,24 @@ const ProjectsEnhanced = () => {
     const [projects, setProjects] = useState<ExtendedProject[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovering, setIsHovering] = useState(false);
+    const [isInView, setIsInView] = useState(false);
+    const [hasInteracted, setHasInteracted] = useState(false);
     const trackRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Card dimensions including gap (gap-6 = 24px)
+    // Mobile: 320px + 24px = 344px
+    // Desktop (sm+): 380px + 24px = 404px
+    const getCardWidth = () => window.innerWidth >= 640 ? 404 : 344;
+
+    // Force re-render on resize to update transform
+    const [, setWindowWidth] = useState(0);
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         fetch('/data/projects.json')
@@ -131,32 +147,56 @@ const ProjectsEnhanced = () => {
             .catch(err => console.error('Failed to load projects:', err));
     }, []);
 
+    // Intersection Observer to handle auto-scroll visibility
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsInView(entry.isIntersecting);
+            },
+            { threshold: 0.3 } // Start when 30% visible
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
     // Check if we can navigate in each direction
     const canGoLeft = currentIndex > 0;
     const canGoRight = currentIndex < projects.length - 1;
 
-    // Auto-advance carousel (stops at end)
+    // Auto-advance logic
     const autoAdvance = useCallback(() => {
-        if (!isHovering && projects.length > 0) {
+        // Only auto-advance if:
+        // 1. Carousel is visible (in viewport)
+        // 2. User hasn't blocked it (hovering)
+        // 3. User hasn't interacted manually
+        // 4. Not at the end
+        if (isInView && !isHovering && !hasInteracted && projects.length > 0) {
             setCurrentIndex(prev => {
+                // If we reach the end, we stop indefinitely (until manual reset)
                 if (prev < projects.length - 1) {
                     return prev + 1;
                 }
-                return prev; // Stay at end, don't wrap
+                return prev;
             });
         }
-    }, [isHovering, projects.length]);
+    }, [isInView, isHovering, hasInteracted, projects.length]);
 
     useEffect(() => {
-        autoScrollRef.current = setInterval(autoAdvance, 4000);
+        autoScrollRef.current = setInterval(autoAdvance, 3500);
         return () => {
             if (autoScrollRef.current) clearInterval(autoScrollRef.current);
         };
     }, [autoAdvance]);
 
-    // Navigate using arrow buttons (linear, no wrapping)
+    // Navigate using arrow buttons
     const navigate = (direction: 'left' | 'right') => {
         if (!projects.length) return;
+        setHasInteracted(true); // Stop auto-scroll after manual interaction
+
         setCurrentIndex(prev => {
             if (direction === 'right' && prev < projects.length - 1) {
                 return prev + 1;
@@ -167,10 +207,10 @@ const ProjectsEnhanced = () => {
         });
     };
 
-    // Calculate transform based on currentIndex
+    // Calculate transform based on currentIndex and dynamic width
     const getTransform = () => {
         if (!projects.length) return 'translateX(0)';
-        const cardWidth = 400; // Card width + gap
+        const cardWidth = getCardWidth();
         const currentOffset = currentIndex * cardWidth;
         return `translateX(-${currentOffset}px)`;
     };
@@ -179,32 +219,14 @@ const ProjectsEnhanced = () => {
         return (
             <section id="projects" className="section-py">
                 <div className="container-premium">
-                    <div className="text-center mb-12">
-                        <div className="animate-shimmer h-10 w-64 mx-auto rounded-lg mb-4"></div>
-                        <div className="animate-shimmer h-6 w-96 mx-auto rounded-lg"></div>
-                    </div>
-                    <div className="flex gap-6 overflow-hidden">
-                        {[1, 2, 3].map((i) => (
-                            <div key={i} className="flex-shrink-0 w-[380px] card animate-shimmer">
-                                <div className="h-48 bg-navy-100"></div>
-                                <div className="p-6 space-y-4">
-                                    <div className="h-6 bg-navy-100 rounded w-3/4"></div>
-                                    <div className="h-4 bg-navy-100 rounded"></div>
-                                    <div className="flex gap-2">
-                                        <div className="h-6 bg-navy-100 rounded w-16"></div>
-                                        <div className="h-6 bg-navy-100 rounded w-16"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    {/* Loading skeleton */}
                 </div>
             </section>
         );
     }
 
     return (
-        <section id="projects" className="section-py relative overflow-hidden">
+        <section id="projects" ref={containerRef} className="section-py relative overflow-hidden">
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-glow opacity-20 pointer-events-none"></div>
 
             <div className="relative z-10">
@@ -218,7 +240,7 @@ const ProjectsEnhanced = () => {
                         <span className="text-gradient">Featured Projects</span>
                     </h2>
                     <p className="text-lg text-navy-600 max-w-2xl mx-auto">
-                        A showcase of my recent development work — use arrows to navigate
+                        A showcase of my recent development work
                     </p>
                 </div>
 
@@ -233,8 +255,8 @@ const ProjectsEnhanced = () => {
                         onClick={() => navigate('left')}
                         disabled={!canGoLeft}
                         className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-navy-100 flex items-center justify-center transition-all ${canGoLeft
-                                ? 'text-navy-600 hover:text-cyan-600 hover:border-cyan-400 opacity-0 group-hover/carousel:opacity-100'
-                                : 'opacity-0 cursor-not-allowed'
+                            ? 'text-navy-600 hover:text-cyan-600 hover:border-cyan-400 opacity-0 group-hover/carousel:opacity-100'
+                            : 'opacity-0 cursor-not-allowed'
                             }`}
                         aria-label="Previous project"
                     >
@@ -246,8 +268,8 @@ const ProjectsEnhanced = () => {
                         onClick={() => navigate('right')}
                         disabled={!canGoRight}
                         className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-navy-100 flex items-center justify-center transition-all ${canGoRight
-                                ? 'text-navy-600 hover:text-cyan-600 hover:border-cyan-400 opacity-0 group-hover/carousel:opacity-100'
-                                : 'opacity-0 cursor-not-allowed'
+                            ? 'text-navy-600 hover:text-cyan-600 hover:border-cyan-400 opacity-0 group-hover/carousel:opacity-100'
+                            : 'opacity-0 cursor-not-allowed'
                             }`}
                         aria-label="Next project"
                     >
@@ -277,8 +299,8 @@ const ProjectsEnhanced = () => {
                                 key={index}
                                 onClick={() => setCurrentIndex(index)}
                                 className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                        ? 'bg-cyan-500 w-6'
-                                        : 'bg-navy-200 hover:bg-navy-300 w-2'
+                                    ? 'bg-cyan-500 w-6'
+                                    : 'bg-navy-200 hover:bg-navy-300 w-2'
                                     }`}
                                 aria-label={`Go to project ${index + 1}`}
                             />

@@ -30,5 +30,10 @@ dist-ssr
 
 # Bolt AI tool
 .bolt
+
+
 repomix-output.xml
 ignore
+
+# Generated files (built from templates)
+public/data/resume.tex

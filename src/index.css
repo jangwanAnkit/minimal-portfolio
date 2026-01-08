@@ -646,7 +646,7 @@ html {
 body {
   background: linear-gradient(135deg, var(--color-bg-muted) 0%, var(--color-bg-light) 100%);
   color: var(--color-text-primary);
-  font-family: 'Geist Mono Variable', 'Fira Code', 'SF Mono', Consolas, monospace;
+  font-family: 'JetBrains Mono', 'Geist Mono Variable', 'Fira Code', 'SF Mono', Consolas, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -655,7 +655,7 @@ body {
 code,
 pre,
 .font-mono {
-  font-family: 'Geist Mono Variable', 'Fira Code', 'SF Mono', Consolas, monospace;
+  font-family: 'JetBrains Mono variable', 'Geist Mono Variable', 'Fira Code', 'SF Mono', Consolas, monospace;
 }
 
 /* ============================================

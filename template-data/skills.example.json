@@ -1,0 +1,75 @@
+{
+  "categories": [
+    {
+      "title": "Frontend",
+      "icon": "Layout",
+      "skills": [
+        "React",
+        "Vue.js",
+        "Angular",
+        "TypeScript",
+        "Tailwind CSS",
+        "Next.js"
+      ]
+    },
+    {
+      "title": "Backend",
+      "icon": "Server",
+      "skills": [
+        "Node.js",
+        "Express",
+        "Python",
+        "Django",
+        "FastAPI",
+        "REST APIs"
+      ]
+    },
+    {
+      "title": "Database",
+      "icon": "Database",
+      "skills": [
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "Redis",
+        "SQLite"
+      ]
+    },
+    {
+      "title": "Languages",
+      "icon": "Code2",
+      "skills": [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "Java",
+        "Go",
+        "SQL"
+      ]
+    },
+    {
+      "title": "Tools & Cloud",
+      "icon": "Terminal",
+      "skills": [
+        "Git",
+        "Docker",
+        "AWS",
+        "Google Cloud",
+        "Azure",
+        "Linux",
+        "VS Code"
+      ]
+    },
+    {
+      "title": "Other",
+      "icon": "Settings",
+      "skills": [
+        "Agile",
+        "CI/CD",
+        "Testing",
+        "UI/UX Design",
+        "DevOps"
+      ]
+    }
+  ]
+}

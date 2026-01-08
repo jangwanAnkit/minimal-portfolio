@@ -1,0 +1,76 @@
+{
+  "projects": [
+    {
+      "title": "E-commerce Platform",
+      "description": "A full-featured e-commerce platform with user authentication, product management, shopping cart, and payment integration. Built with modern web technologies for scalability and performance.",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&h=400",
+      "technologies": [
+        {
+          "name": "React"
+        },
+        {
+          "name": "Node.js"
+        },
+        {
+          "name": "MongoDB"
+        },
+        {
+          "name": "Stripe"
+        },
+        {
+          "name": "JWT"
+        }
+      ],
+      "liveUrl": "https://your-demo-link.com",
+      "sourceUrl": "https://github.com/YOUR_USERNAME/your-repo",
+      "status": "completed"
+    },
+    {
+      "title": "Task Management App",
+      "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features. Includes user roles and project management capabilities.",
+      "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&h=400",
+      "technologies": [
+        {
+          "name": "Vue.js"
+        },
+        {
+          "name": "Express"
+        },
+        {
+          "name": "PostgreSQL"
+        },
+        {
+          "name": "Socket.io"
+        },
+        {
+          "name": "Docker"
+        }
+      ],
+      "liveUrl": "https://your-demo-link.com",
+      "sourceUrl": "https://github.com/YOUR_USERNAME/your-repo",
+      "status": "ongoing"
+    },
+    {
+      "title": "Weather Dashboard",
+      "description": "A responsive weather dashboard that provides real-time weather data, forecasts, and interactive maps. Features location search, weather alerts, and beautiful data visualizations.",
+      "image": "https://images.unsplash.com/photo-1592210454359-9043f2607303?auto=format&fit=crop&w=800&h=400",
+      "technologies": [
+        {
+          "name": "JavaScript"
+        },
+        {
+          "name": "Chart.js"
+        },
+        {
+          "name": "OpenWeather API"
+        },
+        {
+          "name": "CSS3"
+        }
+      ],
+      "liveUrl": "https://your-demo-link.com",
+      "sourceUrl": "https://github.com/YOUR_USERNAME/your-repo",
+      "status": "completed"
+    }
+  ]
+}

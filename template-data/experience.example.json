@@ -1,0 +1,46 @@
+{
+  "experience": [
+    {
+      "company": "Tech Company Inc.",
+      "role": "Full Stack Developer",
+      "startDate": "2023-01",
+      "endDate": null,
+      "location": "San Francisco, CA",
+      "logo": "https://example.com/logo.png",
+      "details": [
+        "Developed and maintained full-stack web applications using React and Node.js",
+        "Led the implementation of microservices architecture improving system scalability",
+        "Collaborated with cross-functional teams to deliver features on agile sprints",
+        "Optimized database queries and API responses, reducing load times by 40%"
+      ]
+    },
+    {
+      "company": "StartUp XYZ",
+      "role": "Frontend Developer",
+      "startDate": "2021-06",
+      "endDate": "2022-12",
+      "location": "New York, NY",
+      "logo": "https://example.com/logo2.png",
+      "details": [
+        "Built responsive user interfaces with React and TypeScript",
+        "Implemented state management solutions using Redux and Context API",
+        "Worked closely with UX designers to implement pixel-perfect designs",
+        "Participated in code reviews and mentored junior developers"
+      ]
+    },
+    {
+      "company": "Digital Agency",
+      "role": "Junior Web Developer",
+      "startDate": "2020-01",
+      "endDate": "2021-05",
+      "location": "Austin, TX",
+      "logo": "https://example.com/logo3.png",
+      "details": [
+        "Developed custom WordPress themes and plugins for client websites",
+        "Created responsive HTML/CSS templates from design mockups",
+        "Performed website maintenance and performance optimization",
+        "Assisted in project planning and client communication"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "John Doe",
+  "title": "Software Engineer | Full Stack Developer | Problem Solver",
+  "bio": "Passionate software engineer who loves building elegant solutions to complex problems. I specialize in creating user-friendly applications that combine beautiful design with robust functionality. Always learning, always building.",
+  "avatar": "https://avatars.githubusercontent.com/u/YOUR_USERNAME?v=4&auto=format&fit=crop&w=150&h=150",
+  "socials": {
+    "github": "https://github.com/YOUR_USERNAME",
+    "linkedin": "https://www.linkedin.com/in/YOUR_PROFILE/"
+  },
+  "resume": {
+    "phone": "+1-555-0123",
+    "website": "https://yourwebsite.com"
+  }
+}

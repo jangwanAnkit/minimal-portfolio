@@ -7,7 +7,7 @@
 %------------------------
 % NOTE: This is a Jinja2 template. Run scripts/render_resume.py to generate resume.tex
 
-\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,10pt]{article}
 
 
 \usepackage{latexsym}
@@ -22,6 +22,7 @@
 \usepackage[english]{babel}
 \usepackage{tabularx}
 \usepackage{fontawesome5}
+\usepackage[margin=0.4in, top=0.35in, bottom=0.35in]{geometry}
 
 \input{glyphtounicode}
 \newcommand{\phone}[1]{\href{tel:#1}{\faPhone{} #1}}
@@ -32,12 +33,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Adjust margins (Jake template)
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+% Margins handled by geometry package
 
 \urlstyle{same}
 
@@ -124,9 +120,11 @@
       {((= job.role =))}{((= job.location =))}
       {((= job.company =))}{((= job.startDate | format_duration(job.endDate) =))}
       \resumeItemListStart
-(( for detail in job.details ))
-        \resumeItem{((= detail | latex_escape =))}
-(( endfor ))
+(( if loop.index0 < 4 ))
+  (( for detail in job.details ))
+          \resumeItem{((= detail | latex_escape =))}
+  (( endfor ))
+(( endif ))
       \resumeItemListEnd
 (( endfor ))
 
@@ -135,7 +133,7 @@
 %-----------PROJECTS-----------
 \section{Projects}
   \resumeSubHeadingListStart
-(( for project in projects ))
+(( for project in projects[:4] ))
     \resumeProjectHeading
       {\textbf{((= project.title =))} $|$ \emph{((= project.technologies | join_tech =))}}{((= project.status | capitalize =))}
       \resumeItemListStart
@@ -143,6 +141,9 @@
       \resumeItemListEnd
 (( endfor ))
   \resumeSubHeadingListEnd
+  \vspace{-6pt}
+  \small{\textit{For more projects, visit: \href{((= profile.resume.website + "\#projects" =))}{((= profile.resume.website =))}}}
+  \vspace{-4pt}
 
 %-------------------------------------------
 \end{document}

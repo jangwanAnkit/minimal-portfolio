@@ -6,8 +6,11 @@ import NavbarEnhanced from './components/NavbarEnhanced';
 import ProjectsEnhanced from './components/ProjectsEnhanced';
 import SEO from './components/SEO';
 import SkillsEnhanced from './components/SkillsEnhanced';
+import { useHashScroll } from './hooks/useHashScroll';
 
 function App() {
+  useHashScroll();
+
   return (
     <HelmetProvider>
       <div className="min-h-screen">

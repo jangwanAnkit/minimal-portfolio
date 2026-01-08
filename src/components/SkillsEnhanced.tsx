@@ -12,72 +12,17 @@ const iconMap = {
     Settings,
 };
 
-// Color schemes for different categories
-const categoryColors: Record<string, { bg: string; text: string; border: string; badge: string; iconBg: string }> = {
-    Frontend: {
-        bg: 'bg-cyan-50',
-        text: 'text-cyan-700',
-        border: 'border-cyan-200 hover:border-cyan-400',
-        badge: 'bg-cyan-100 text-cyan-700 hover:bg-cyan-200',
-        iconBg: 'bg-cyan-500',
-    },
-    Backend: {
-        bg: 'bg-electric-100',
-        text: 'text-electric-600',
-        border: 'border-electric-200 hover:border-electric-400',
-        badge: 'bg-electric-100 text-electric-600 hover:bg-electric-200',
-        iconBg: 'bg-electric-600',
-    },
-    Database: {
-        bg: 'bg-emerald-100',
-        text: 'text-emerald-600',
-        border: 'border-emerald-200 hover:border-emerald-400',
-        badge: 'bg-emerald-100 text-emerald-600 hover:bg-emerald-200',
-        iconBg: 'bg-emerald-500',
-    },
-    Languages: {
-        bg: 'bg-amber-100',
-        text: 'text-amber-600',
-        border: 'border-amber-200 hover:border-amber-400',
-        badge: 'bg-amber-100 text-amber-600 hover:bg-amber-200',
-        iconBg: 'bg-amber-500',
-    },
-    Tools: {
-        bg: 'bg-navy-100',
-        text: 'text-navy-600',
-        border: 'border-navy-200 hover:border-navy-400',
-        badge: 'bg-navy-100 text-navy-600 hover:bg-navy-200',
-        iconBg: 'bg-navy-500',
-    },
-    Other: {
-        bg: 'bg-navy-50',
-        text: 'text-navy-600',
-        border: 'border-navy-100 hover:border-cyan-400',
-        badge: 'bg-navy-100 text-navy-600 hover:bg-navy-200',
-        iconBg: 'bg-gradient-primary',
-    },
-};
-
-const defaultColors = categoryColors.Other;
-
 const SkillCategoryCard = ({ category }: { category: SkillCategoryType }) => {
     const IconComponent = iconMap[category.icon as keyof typeof iconMap] || Code2;
-    const colors = categoryColors[category.title] || defaultColors;
 
     return (
-        <div
-            className={`
-        card p-6 border ${colors.border}
-        hover:shadow-card-lg transition-all duration-300
-        group
-      `}
-        >
+        <div className="skill-card group">
             {/* Category Header */}
-            <div className="flex items-center gap-3 mb-5">
-                <div className={`w-10 h-10 rounded-xl ${colors.iconBg} flex items-center justify-center shadow-card-sm`}>
-                    <IconComponent className="w-5 h-5 text-white" />
+            <div className="skill-card-header">
+                <div className="skill-icon">
+                    <IconComponent className="w-5 h-5" />
                 </div>
-                <h3 className={`text-lg font-semibold ${colors.text}`}>{category.title}</h3>
+                <h3 className="skill-title">{category.title}</h3>
             </div>
 
             {/* Skills Pills */}
@@ -85,11 +30,7 @@ const SkillCategoryCard = ({ category }: { category: SkillCategoryType }) => {
                 {category.skills.map((skill) => (
                     <span
                         key={skill}
-                        className={`
-              px-3 py-1.5 rounded-full text-sm font-medium
-              ${colors.badge}
-              transition-all duration-200 cursor-default
-            `}
+                        className="skill-badge"
                     >
                         {skill}
                     </span>
@@ -160,7 +101,7 @@ const SkillsEnhanced = () => {
                     <h2 className="text-4xl sm:text-5xl font-bold mb-4">
                         <span className="text-gradient">Skills & Technologies</span>
                     </h2>
-                    <p className="text-lg text-navy-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-theme-secondary max-w-2xl mx-auto">
                         {totalSkills}+ technologies across {totalCategories} domains — from frontend
                         frameworks to cloud infrastructure
                     </p>
@@ -183,18 +124,18 @@ const SkillsEnhanced = () => {
                 <div className="mt-16 text-center">
                     <div className="inline-flex items-center gap-6 glass-card px-8 py-4 rounded-2xl">
                         <div className="text-center">
-                            <p className="text-2xl font-bold text-navy-800">{totalCategories}</p>
-                            <p className="text-sm text-navy-500">Domains</p>
+                            <p className="text-2xl font-bold stat-value">{totalCategories}</p>
+                            <p className="text-sm stat-label">Domains</p>
                         </div>
-                        <div className="w-px h-10 bg-navy-200"></div>
+                        <div className="w-px h-10 divider-theme"></div>
                         <div className="text-center">
-                            <p className="text-2xl font-bold text-navy-800">{totalSkills}+</p>
-                            <p className="text-sm text-navy-500">Technologies</p>
+                            <p className="text-2xl font-bold stat-value">{totalSkills}+</p>
+                            <p className="text-sm stat-label">Technologies</p>
                         </div>
-                        <div className="w-px h-10 bg-navy-200"></div>
+                        <div className="w-px h-10 divider-theme"></div>
                         <div className="text-center">
-                            <p className="text-2xl font-bold text-navy-800">{yearsExperience}</p>
-                            <p className="text-sm text-navy-500">Years</p>
+                            <p className="text-2xl font-bold stat-value">{yearsExperience}</p>
+                            <p className="text-sm stat-label">Years</p>
                         </div>
                     </div>
                 </div>

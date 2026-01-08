@@ -13,11 +13,11 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
             style={{ animationDelay: `${index * 0.15}s` }}
         >
             {/* Timeline line */}
-            <div className="absolute left-[11px] top-2 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 to-navy-200 last:hidden"></div>
+            <div className="absolute left-[11px] top-2 bottom-0 w-0.5 timeline-line last:hidden"></div>
 
             {/* Timeline dot */}
-            <div className="absolute left-0 top-2 w-6 h-6 rounded-full bg-gradient-primary shadow-glow-cyan flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-white"></div>
+            <div className="absolute left-0 top-2 w-6 h-6 stat-icon shadow-glow-cyan flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-theme-card"></div>
             </div>
 
             {/* Card */}
@@ -34,7 +34,7 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
                         {/* Left: Logo + Info */}
                         <div className="flex items-center gap-4 flex-1">
                             {/* Company Logo */}
-                            <div className="w-14 h-14 rounded-xl bg-white shadow-card-sm border border-navy-100 flex items-center justify-center p-2 flex-shrink-0">
+                            <div className="w-14 h-14 social-icon p-2 flex-shrink-0">
                                 <img
                                     src={experience.logo}
                                     alt={`${experience.company} logo`}
@@ -42,17 +42,17 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
                                     onError={(e) => {
                                         const target = e.target as HTMLImageElement;
                                         target.style.display = 'none';
-                                        target.parentElement!.innerHTML = `<span class="text-xl font-bold text-navy-400">${experience.company[0]}</span>`;
+                                        target.parentElement!.innerHTML = `<span class="text-xl font-bold text-theme-secondary">${experience.company[0]}</span>`;
                                     }}
                                 />
                             </div>
 
                             {/* Company Info */}
                             <div className="flex-1 min-w-0">
-                                <h3 className="text-lg font-bold text-navy-800 truncate">
+                                <h3 className="text-lg font-bold exp-title truncate">
                                     {experience.company}
                                 </h3>
-                                <p className="text-cyan-600 font-medium">
+                                <p className="exp-company">
                                     {experience.role}
                                 </p>
                             </div>
@@ -61,11 +61,11 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
                         {/* Right: Meta + Expand */}
                         <div className="flex items-center gap-4">
                             <div className="hidden sm:block text-right">
-                                <div className="flex items-center gap-1.5 text-navy-500 text-sm mb-1">
+                                <div className="flex items-center gap-1.5 exp-date text-sm mb-1">
                                     <Calendar className="w-3.5 h-3.5" />
                                     <span>{duration}</span>
                                 </div>
-                                <div className="flex items-center gap-1.5 text-navy-400 text-sm">
+                                <div className="flex items-center gap-1.5 stat-label text-sm">
                                     <MapPin className="w-3.5 h-3.5" />
                                     <span>{experience.location}</span>
                                 </div>
@@ -73,7 +73,7 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
 
                             <div className={`
                 w-8 h-8 rounded-full flex items-center justify-center transition-all
-                ${isExpanded ? 'bg-cyan-100 text-cyan-600' : 'bg-navy-50 text-navy-400'}
+                ${isExpanded ? 'bg-theme-accent text-theme-inverse' : 'bg-theme-muted text-theme-secondary'}
               `}>
                                 {isExpanded ? (
                                     <ChevronUp className="w-5 h-5" />
@@ -86,11 +86,11 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
 
                     {/* Mobile meta */}
                     <div className="flex items-center gap-4 mt-3 sm:hidden">
-                        <span className="flex items-center gap-1 text-navy-500 text-sm">
+                        <span className="flex items-center gap-1 exp-date text-sm">
                             <Calendar className="w-3.5 h-3.5" />
                             {duration}
                         </span>
-                        <span className="flex items-center gap-1 text-navy-400 text-sm">
+                        <span className="flex items-center gap-1 stat-label text-sm">
                             <MapPin className="w-3.5 h-3.5" />
                             {experience.location}
                         </span>
@@ -104,14 +104,14 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
             ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}
           `}
                 >
-                    <div className="px-6 pb-6 border-t border-navy-100">
+                    <div className="px-6 pb-6 border-t border-theme">
                         <ul className="mt-4 space-y-3">
                             {experience.details.map((detail, idx) => (
                                 <li
                                     key={idx}
-                                    className="flex gap-3 text-navy-600 text-sm leading-relaxed"
+                                    className="flex gap-3 exp-description text-sm leading-relaxed"
                                 >
-                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0"></span>
+                                    <span className="w-1.5 h-1.5 rounded-full bg-theme-accent mt-2 flex-shrink-0"></span>
                                     <span>{detail}</span>
                                 </li>
                             ))}
@@ -177,7 +177,7 @@ const ExperienceEnhanced = () => {
                     <h2 className="text-4xl sm:text-5xl font-bold mb-4">
                         <span className="text-gradient">Work Experience</span>
                     </h2>
-                    <p className="text-lg text-navy-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-theme-secondary max-w-2xl mx-auto">
                         {totalYears} years building products across {experiences.length} companies —
                         from startups to enterprise
                     </p>

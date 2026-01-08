@@ -36,10 +36,10 @@ const ProjectCard = ({ project }: { project: ExtendedProject }) => {
                     {/* Status Badge */}
                     <div
                         className={`
-                            absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold
+                            absolute top-4 right-4 status-badge
                             ${project.status === 'ongoing'
-                                ? 'bg-amber-100 text-amber-700'
-                                : 'bg-emerald-100 text-emerald-700'
+                                ? 'status-badge-progress'
+                                : 'status-badge-complete'
                             }
                         `}
                     >
@@ -86,12 +86,12 @@ const ProjectCard = ({ project }: { project: ExtendedProject }) => {
 
                 {/* Content Section */}
                 <div className="p-5">
-                    <h3 className="text-lg font-bold text-navy-800 mb-2 group-hover:text-cyan-600 transition-colors">
+                    <h3 className="text-lg font-bold project-title mb-2 group-hover:text-theme-accent transition-colors">
                         {project.title}
                     </h3>
 
                     <div className={`overflow-hidden transition-all duration-300 ${isHovered ? 'max-h-32' : 'max-h-12'}`}>
-                        <p className={`text-navy-600 text-sm ${isHovered ? '' : 'line-clamp-2'}`}>
+                        <p className={`project-description text-sm ${isHovered ? '' : 'line-clamp-2'}`}>
                             {project.description}
                         </p>
                     </div>
@@ -100,13 +100,13 @@ const ProjectCard = ({ project }: { project: ExtendedProject }) => {
                         {(isHovered ? project.technologies : project.technologies.slice(0, 4)).map((tech) => (
                             <span
                                 key={tech.name}
-                                className="px-2 py-0.5 text-xs font-medium rounded-md bg-navy-50 text-navy-600 border border-navy-100"
+                                className="project-tech"
                             >
                                 {tech.name}
                             </span>
                         ))}
                         {!isHovered && project.technologies.length > 4 && (
-                            <span className="px-2 py-0.5 text-xs font-medium rounded-md bg-cyan-50 text-cyan-600">
+                            <span className="project-tech text-theme-accent">
                                 +{project.technologies.length - 4}
                             </span>
                         )}
@@ -239,7 +239,7 @@ const ProjectsEnhanced = () => {
                     <h2 className="text-4xl sm:text-5xl font-bold mb-4">
                         <span className="text-gradient">Featured Projects</span>
                     </h2>
-                    <p className="text-lg text-navy-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-theme-secondary max-w-2xl mx-auto">
                         A showcase of my recent development work
                     </p>
                 </div>
@@ -254,8 +254,8 @@ const ProjectsEnhanced = () => {
                     <button
                         onClick={() => navigate('left')}
                         disabled={!canGoLeft}
-                        className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-navy-100 flex items-center justify-center transition-all ${canGoLeft
-                            ? 'text-navy-600 hover:text-cyan-600 hover:border-cyan-400 opacity-0 group-hover/carousel:opacity-100'
+                        className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 social-icon transition-all ${canGoLeft
+                            ? 'opacity-0 group-hover/carousel:opacity-100'
                             : 'opacity-0 cursor-not-allowed'
                             }`}
                         aria-label="Previous project"
@@ -267,8 +267,8 @@ const ProjectsEnhanced = () => {
                     <button
                         onClick={() => navigate('right')}
                         disabled={!canGoRight}
-                        className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg border border-navy-100 flex items-center justify-center transition-all ${canGoRight
-                            ? 'text-navy-600 hover:text-cyan-600 hover:border-cyan-400 opacity-0 group-hover/carousel:opacity-100'
+                        className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 social-icon transition-all ${canGoRight
+                            ? 'opacity-0 group-hover/carousel:opacity-100'
                             : 'opacity-0 cursor-not-allowed'
                             }`}
                         aria-label="Next project"
@@ -299,8 +299,8 @@ const ProjectsEnhanced = () => {
                                 key={index}
                                 onClick={() => setCurrentIndex(index)}
                                 className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                    ? 'bg-cyan-500 w-6'
-                                    : 'bg-navy-200 hover:bg-navy-300 w-2'
+                                    ? 'bg-theme-accent w-6'
+                                    : 'divider-theme w-2 hover:bg-theme-muted'
                                     }`}
                                 aria-label={`Go to project ${index + 1}`}
                             />
@@ -314,7 +314,7 @@ const ProjectsEnhanced = () => {
                         href="https://github.com/jangwanAnkit"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-medium transition-colors"
+                        className="inline-flex items-center gap-2 text-theme-accent hover:opacity-80 font-medium transition-all"
                     >
                         <span>View more on GitHub</span>
                         <ArrowUpRight className="w-4 h-4" />

@@ -73,14 +73,14 @@ const HeroEnhanced = () => {
                                 className="w-16 h-16 rounded-full object-cover shadow-card-sm border-2 border-white flex-shrink-0"
                             />
                             <div className="relative group">
-                                <h1 className="text-xl font-bold text-navy-800">
-                                    Hi, I'm {profile.name.split(' ')[0]}. <span className="cursor-help border-b-2 border-dashed border-navy-300 hover:border-cyan-400 transition-colors pb-0.5">I build things.</span>
+                                <h1 className="text-xl font-bold text-theme-primary">
+                                    Hi, I'm {profile.name.split(' ')[0]}. <span className="cursor-help border-b-2 border-dashed border-theme hover:border-theme-accent transition-colors pb-0.5">I build things.</span>
                                 </h1>
                                 {/* Mobile Tooltip Content */}
-                                <div className="absolute top-full left-0 mt-3 w-[280px] p-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-navy-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto z-30">
+                                <div className="absolute top-full left-0 mt-3 w-[280px] p-4 tooltip-theme opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto z-30">
                                     {/* Arrow */}
-                                    <div className="absolute -top-2 left-8 w-4 h-4 bg-white border-t border-l border-navy-100 transform rotate-45"></div>
-                                    <p className="text-sm text-navy-600 leading-relaxed font-normal">
+                                    <div className="absolute -top-2 left-8 w-4 h-4 bg-theme-card border-t border-l border-theme transform rotate-45"></div>
+                                    <p className="text-sm text-theme-secondary leading-relaxed font-normal">
                                         {profile.bio}
                                     </p>
                                 </div>
@@ -90,22 +90,22 @@ const HeroEnhanced = () => {
                         <div className="hidden lg:block">
                             {/* Desktop Headline */}
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-                                <span className="text-navy-800 block">Hi, I'm {profile.name.split(' ')[0]}</span>
+                                <span className="text-theme-primary block">Hi, I'm {profile.name.split(' ')[0]}</span>
                             </h1>
                         </div>
 
                         {/* Bio / Hook with Elegant Tooltip - Desktop only */}
                         <div className="relative group w-fit mb-8 z-20 hidden lg:block">
-                            <h2 className="text-2xl lg:text-3xl font-bold text-navy-800 cursor-help border-b-2 border-dashed border-navy-300 hover:border-cyan-400 transition-colors inline-block pb-1">
+                            <h2 className="text-2xl lg:text-3xl font-bold text-theme-primary cursor-help border-b-2 border-dashed border-theme hover:border-theme-accent transition-colors inline-block pb-1">
                                 I build things.
                             </h2>
 
                             {/* Tooltip Content */}
-                            <div className="absolute top-full left-0 mt-4 w-[280px] sm:w-[400px] p-6 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-navy-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto">
+                            <div className="absolute top-full left-0 mt-4 w-[280px] sm:w-[400px] p-6 tooltip-theme opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto">
                                 {/* Arrow */}
-                                <div className="absolute -top-2 left-8 w-4 h-4 bg-white border-t border-l border-navy-100 transform rotate-45"></div>
+                                <div className="absolute -top-2 left-8 w-4 h-4 bg-theme-card border-t border-l border-theme transform rotate-45"></div>
 
-                                <p className="text-base text-navy-600 leading-relaxed font-normal">
+                                <p className="text-base text-theme-secondary leading-relaxed font-normal">
                                     {profile.bio}
                                 </p>
                             </div>
@@ -114,13 +114,13 @@ const HeroEnhanced = () => {
                         {/* Stats Row - Compact on mobile */}
                         <div className="flex flex-wrap gap-4 lg:gap-6 mb-6 lg:mb-8 relative z-10">
                             {stats.map((stat) => (
-                                <div key={stat.label} className="flex items-center gap-2 lg:gap-3">
-                                    <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-card-sm">
-                                        <stat.icon className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
+                                <div key={stat.label} className="stat-box">
+                                    <div className="w-10 h-10 lg:w-12 lg:h-12 stat-icon">
+                                        <stat.icon className="w-4 h-4 lg:w-5 lg:h-5 text-theme-inverse" />
                                     </div>
                                     <div>
-                                        <p className="text-xl lg:text-2xl font-bold text-navy-800">{stat.value}</p>
-                                        <p className="text-xs lg:text-sm text-navy-500">{stat.label}</p>
+                                        <p className="text-xl lg:text-2xl stat-value">{stat.value}</p>
+                                        <p className="text-xs lg:text-sm stat-label">{stat.label}</p>
                                     </div>
                                 </div>
                             ))}
@@ -148,7 +148,7 @@ const HeroEnhanced = () => {
                             {techStack.map((tech) => (
                                 <span
                                     key={tech}
-                                    className="px-2.5 py-1 lg:px-3 lg:py-1.5 text-xs lg:text-sm font-medium text-navy-600 bg-white rounded-full border border-navy-200 shadow-card-sm hover:border-cyan-400 hover:text-cyan-600 transition-all cursor-default"
+                                    className="tech-pill px-2.5 py-1 lg:px-3 lg:py-1.5"
                                 >
                                     {tech}
                                 </span>
@@ -162,7 +162,7 @@ const HeroEnhanced = () => {
                                     href={profile.socials.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-xl bg-white shadow-card-sm border border-navy-100 flex items-center justify-center text-navy-600 hover:text-cyan-600 hover:border-cyan-400 transition-all"
+                                    className="w-10 h-10 social-icon"
                                     aria-label="GitHub Profile"
                                 >
                                     <Github className="w-4 h-4" />
@@ -173,7 +173,7 @@ const HeroEnhanced = () => {
                                     href={profile.socials.linkedin}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-xl bg-white shadow-card-sm border border-navy-100 flex items-center justify-center text-navy-600 hover:text-cyan-600 hover:border-cyan-400 transition-all"
+                                    className="w-10 h-10 social-icon"
                                     aria-label="LinkedIn Profile"
                                 >
                                     <Linkedin className="w-4 h-4" />
@@ -181,7 +181,7 @@ const HeroEnhanced = () => {
                             )}
                             <a
                                 href={`mailto:${contact.email}`}
-                                className="w-10 h-10 rounded-xl bg-white shadow-card-sm border border-navy-100 flex items-center justify-center text-navy-600 hover:text-cyan-600 hover:border-cyan-400 transition-all"
+                                className="w-10 h-10 social-icon"
                                 aria-label="Email Contact"
                             >
                                 <Mail className="w-4 h-4" />
@@ -208,7 +208,7 @@ const HeroEnhanced = () => {
                                     href={profile.socials.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-xl bg-white shadow-card-sm border border-navy-100 flex items-center justify-center text-navy-600 hover:text-cyan-600 hover:border-cyan-400 hover:shadow-card-md transition-all"
+                                    className="w-12 h-12 social-icon"
                                     aria-label="GitHub Profile"
                                 >
                                     <Github className="w-5 h-5" />
@@ -219,7 +219,7 @@ const HeroEnhanced = () => {
                                     href={profile.socials.linkedin}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-xl bg-white shadow-card-sm border border-navy-100 flex items-center justify-center text-navy-600 hover:text-cyan-600 hover:border-cyan-400 hover:shadow-card-md transition-all"
+                                    className="w-12 h-12 social-icon"
                                     aria-label="LinkedIn Profile"
                                 >
                                     <Linkedin className="w-5 h-5" />
@@ -227,7 +227,7 @@ const HeroEnhanced = () => {
                             )}
                             <a
                                 href={`mailto:${contact.email}`}
-                                className="w-12 h-12 rounded-xl bg-white shadow-card-sm border border-navy-100 flex items-center justify-center text-navy-600 hover:text-cyan-600 hover:border-cyan-400 hover:shadow-card-md transition-all"
+                                className="w-12 h-12 social-icon"
                                 aria-label="Email Contact"
                             >
                                 <Mail className="w-5 h-5" />

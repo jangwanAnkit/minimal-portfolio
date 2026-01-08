@@ -1,6 +1,7 @@
 import { Briefcase, Building, Code2, Mail, User2, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import type { NavigationItem } from '../types/portfolio';
+import { ThemeToggle } from './ThemeToggle';
 
 const iconMap = {
     User2,
@@ -56,7 +57,7 @@ const NavbarEnhanced = () => {
                 <div className="glass-card px-4 py-3 rounded-full">
                     <div className="flex items-center gap-2">
                         {[1, 2, 3, 4, 5].map((i) => (
-                            <div key={i} className="w-10 h-10 bg-navy-100 rounded-full animate-shimmer"></div>
+                            <div key={i} className="w-10 h-10 bg-theme-muted rounded-full animate-shimmer"></div>
                         ))}
                     </div>
                 </div>
@@ -80,11 +81,10 @@ const NavbarEnhanced = () => {
                                     href={item.href}
                                     onClick={handleNavClick}
                                     className={`
-                    relative flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm
-                    transition-all duration-300 ease-out
+                    nav-item
                     ${isActive
-                                            ? 'bg-gradient-primary text-white shadow-glow-cyan'
-                                            : 'text-navy-600 hover:text-cyan-600 hover:bg-navy-50'
+                                            ? 'nav-item-active'
+                                            : ''
                                         }
                   `}
                                 >
@@ -95,6 +95,9 @@ const NavbarEnhanced = () => {
                                 </a>
                             );
                         })}
+                        {/* Theme Toggle Divider */}
+                        <div className="w-px h-6 divider-theme mx-1"></div>
+                        {/* <ThemeToggle /> */}
                     </div>
                 </div>
             </nav>
@@ -111,7 +114,7 @@ const NavbarEnhanced = () => {
             {/* Mobile Menu Overlay */}
             {mobileMenuOpen && (
                 <div
-                    className="fixed inset-0 bg-navy-900/50 backdrop-blur-sm z-40 sm:hidden"
+                    className="fixed inset-0 bg-theme-primary/50 backdrop-blur-sm z-40 sm:hidden"
                     onClick={() => setMobileMenuOpen(false)}
                 />
             )}
@@ -124,7 +127,11 @@ const NavbarEnhanced = () => {
           ${mobileMenuOpen ? 'translate-y-0' : 'translate-y-full'}
         `}
             >
-                <div className="bg-white rounded-t-3xl shadow-card-xl p-6 pb-24">
+                <div className="bg-theme-card rounded-t-3xl shadow-card-xl p-6 pb-24">
+                    {/* Theme Toggle for Mobile */}
+                    <div className="flex justify-center mb-4">
+                        {/* <ThemeToggle /> */}
+                    </div>
                     <div className="grid grid-cols-3 gap-4">
                         {menuItems.map((item) => {
                             const IconComponent = iconMap[item.icon as keyof typeof iconMap] || User2;
@@ -136,11 +143,10 @@ const NavbarEnhanced = () => {
                                     href={item.href}
                                     onClick={handleNavClick}
                                     className={`
-                    flex flex-col items-center gap-2 p-4 rounded-2xl
-                    transition-all duration-300
+                    mobile-nav-item
                     ${isActive
-                                            ? 'bg-gradient-primary text-white shadow-card-md'
-                                            : 'bg-navy-50 text-navy-600 hover:bg-navy-100'
+                                            ? 'mobile-nav-item-active'
+                                            : ''
                                         }
                   `}
                                 >
@@ -157,3 +163,4 @@ const NavbarEnhanced = () => {
 };
 
 export default NavbarEnhanced;
+
